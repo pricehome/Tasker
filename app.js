@@ -1,51 +1,49 @@
-// Define Variables
-const form = document.querySelector("#task-form")
-const taskList = document.querySelector(".collection")
-const clearBtn = document.querySelector(".clear-tasks")
-const filter = document.querySelector("#filter")
-const taskInput = document.querySelector("#task")
+// Define Vars
+const form = document.querySelector('#task-form')
+const taskList = document.querySelector('.collection')
+const clearBtn = document.querySelector('.clear-tasks')
+const filter = document.querySelector('#filter')
+const taskInput = document.querySelector('#task')
 
-// Function to load all event listeners
+// Define for loading all event listeners
 loadEventListener()
 
-// Load all eventlisteners
+// Load all event listeners
 function loadEventListener() {
-	// Add task event
-	form.addEventListener("submit", addTask)
+	form.addEventListener('submit', addTask)
+	// taskList.addEventListener('click', removeTask)
 }
 
-// Add Task
+// Add task
 function addTask(e) {
-	if (taskInput.value === "") {
-		alert("add an item")
+	if (taskInput.value === '') {
+		alert('Add a Task')
 	}
-
-	// create li element
-	const li = document.createElement("li")
-
-	// add class to li
-	li.className = ".collection-item"
-
+	// CREATE LI ELEMENT
+	const li = document.createElement('li')
+	// add class
+	li.className = 'collection-item'
 	// create text node and append to li
 	li.appendChild(document.createTextNode(taskInput.value))
-
-	// create new link element
-	const link = document.createElement("a")
-
-	// add class to link
-	link.className = "delete-item secondary-content"
-
-	// add icon HTML
-	link.innerHTML = '<i class= "fa fa-remove"></i>'
-
-	// append link to li
+	// create new link element for delete
+	const link = document.createElement('a')
+	// Add class----in materialize the seconary-content class moves it to the right
+	link.className = 'delete-item secondary-content'
+	// add icon html
+	link.innerHTML = '<i class="fa fa-remove"></i>'
+	// append the link to li
 	li.appendChild(link)
-
-	// append li to ul
+	// append the li to the ul
 	taskList.appendChild(li)
-
-	// clear input
-	taskInput.value = ""
-
+	// Clear input
+	taskInput.value = ''
 	e.preventDefault()
 }
+
+// function removeTask(e) {
+// 	if (e.target.parentElement.classList.contains('delete-item')) {
+// 		if (confirm('Are You Sure?')) {
+// 			e.target.parentElement.parentElement.remove()
+// 		}
+// 	}
+// }
