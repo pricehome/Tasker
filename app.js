@@ -11,7 +11,8 @@ loadEventListener()
 // Load all event listeners
 function loadEventListener() {
 	form.addEventListener('submit', addTask)
-	// taskList.addEventListener('click', removeTask)
+	taskList.addEventListener('click', removeTask)
+	clearBtn.addEventListener('click', clearTasks)
 }
 
 // Add task
@@ -40,10 +41,14 @@ function addTask(e) {
 	e.preventDefault()
 }
 
-// function removeTask(e) {
-// 	if (e.target.parentElement.classList.contains('delete-item')) {
-// 		if (confirm('Are You Sure?')) {
-// 			e.target.parentElement.parentElement.remove()
-// 		}
-// 	}
-// }
+function removeTask(e) {
+	if (e.target.parentElement.classList.contains('delete-item')) {
+		if (confirm('Are You Sure?')) {
+			e.target.parentElement.parentElement.remove()
+		}
+	}
+}
+
+function clearTasks() {
+	taskList.innerHTML = ''
+}
